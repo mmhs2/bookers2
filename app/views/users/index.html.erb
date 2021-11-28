@@ -1,0 +1,34 @@
+<div class="container user_page">
+<div class="row">
+    
+<!--LEFT PAGE------------------------------>
+    <div class="left-bar col-md-3">
+        <%= render 'books/sidebar', user: @user, book: @book %>
+    </div>
+    
+<!--RIGHT PAGE----------------------------->
+    <div class="col-md-8 offset-md-1">
+        <h2>Users</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>image</th>
+                    <th>name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |u| %>
+                <tr>
+                    <td><%= attachment_image_tag u, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg" %></td>
+                    <td><%= u.name %></td>
+                    <td><%= link_to "Show", user_path(u.id) %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    
+<!--END------------------------------------>
+</div>
+</div>

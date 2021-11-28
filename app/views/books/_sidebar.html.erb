@@ -1,0 +1,23 @@
+        <div class="left-bar-prof">
+        <!------------ユーザー情報------------->
+            <h2>User info</h2>
+            <%= attachment_image_tag current_user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+            <p><strong>name</strong>：<%= current_user.name %></p>
+            <p><strong>introduction</strong>：<%= current_user.introduction %></p>
+            <%= link_to edit_user_path(current_user.id), class:"btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-user-cog"></i>
+            <% end %>
+        </div>
+        <!----------------投稿----------------->
+        <div class="left-bar-post">
+            <h2>New book</h2>
+        <!---------------FORM_WITH----------------->
+            <%= form_with model: Book.new, local: true do |form| %>
+            <label class="form-label">Title</label>
+            <%= form.text_field :title, class:"form-control" %>
+            <label class="form-label">Opinion</label>
+            <%= form.text_area :body, class:"form-control" %>
+            <%= form.submit %>
+            <% end %>
+        
+        </div>

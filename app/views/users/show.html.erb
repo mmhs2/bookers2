@@ -1,0 +1,54 @@
+<div class="container user_page">
+<div class="row">
+<!--LEFT PAGE------------------------------>
+    <div class="left-bar col-md-3">
+              <div class="left-bar-prof">
+        <!------------ユーザー情報------------->
+            <h2>User info</h2>
+            <%= link_to attachment_image_tag(@user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"),user_path(@user.id) %>
+            <p><strong>name</strong>：<%= @user.name %></p>
+            <p><strong>introduction</strong>：<%= @user.introduction %></p>
+            <%= link_to edit_user_path(@user.id), class:"btn btn-block btn-sm btn-outline-secondary" do %>
+            <i class="fas fa-user-cog"></i>
+            <% end %>
+        </div>
+        <!----------------投稿----------------->
+        <div class="left-bar-post">
+            <h2>New book</h2>
+            <%= form_with model: Book.new do |form| %>
+            <label class="form-label">Title</label>
+            <%= form.text_field :title, class:"form-control" %>
+            <label class="form-label">Opinion</label>
+            <%= form.text_area :body, class:"form-control" %>
+            <%= form.submit %>
+            <% end %>
+        </div>
+    </div>
+<!--RIGHT PAGE----------------------------->
+    <div class="col-md-8 offset-md-1">
+    <h2>Books</h2>
+        <table class="table table-hover table-inverse">
+        <thead>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <% @books.each do |book| %>
+            <div>
+            <tr>
+            <td><%= link_to attachment_image_tag(@user, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg"),user_path(@user) %></td>
+            <td><%= link_to book_path(book.id) do %><%= book.title %><% end %></td>
+            <td><%= book.body %></td>
+            <td></td>
+            </tr>
+            </div>
+            <% end %>
+            <!--%= paginate @mybooks %>-->
+        </tbody>
+        </table>
+    </div>
+<!--END------------------------------------>
+</div>
+</div>

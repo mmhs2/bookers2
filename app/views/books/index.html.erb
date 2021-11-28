@@ -1,0 +1,45 @@
+<% if @book.errors.any? %>
+	<div class="alert alert-warning">
+		<ul>
+			<% @book.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+<div class="container user_page">
+<div class="row">
+<!--LEFT PAGE------------------------------>
+    <div class="left-bar col-md-3">
+      <%= render 'books/sidebar', user: @user, book: @book %>
+    </div>
+<!--RIGHT PAGE----------------------------->
+    <div class="col-md-8 offset-md-1">
+    <h2>Books</h2>
+        <table class="table table-hover table-inverse">
+        <thead>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <% @books.each do |book| %>
+            <div>
+            <tr>
+            <td>
+            <% @puser = User.find_by(id: book.user_id) %>
+                <%= link_to attachment_image_tag(@puser, :profile_image, size: "40x40", format: 'jpeg', fallback: "no_image.jpg"),user_path(@puser.id) %>
+            </td>
+            <td><%= link_to book_path(book.id) do %><%= book.title %><% end %></td>
+            <td><%= book.body %></td>
+            <td></td>
+            </tr>
+            </div>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+<!--END------------------------------------>
+</div>
+</div>

@@ -1,0 +1,63 @@
+// Place all the styles related to the books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: box-border;
+}
+
+/////////////////////////COMMON
+.container {
+    width: 100%;
+}
+
+/////////////////////////HEADER 
+header {
+    width: cover;
+    background-color: rgb(30,50,60);
+}
+
+.bd-highlight {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    line-height: 24px;
+}
+
+/////////////////////////HOME
+main {
+    padding-top: 30px;
+}
+
+/////////////////////////FOOTER 
+footer {
+    padding-top: 30px;
+    height: 40px;
+}
+
+p {
+    line-height: 24px;
+}
+
+/////////////////////////LOGIN_PAGE, SIGN_UP_PAGE
+.login_page, .sign_up_page {
+    padding-top: 30px;
+}
+
+.field, .actions {
+    padding-bottom: 10px;
+}
+
+/////////////////////////USER_PAGE, USER_EDIT_PAGE
+
+.book-edit {
+    margin: 0 auto;
+}
+
+h2 {
+    padding-top: 20px;
+}
